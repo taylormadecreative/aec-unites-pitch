@@ -1,0 +1,2748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0A0A12">
+<meta name="description" content="Seven Isn't Thirteen. A social media content engine for AEC Unites — built before the call. By Taylormade Creative.">
+<meta name="author" content="Nelson Taylor — Taylormade Creative">
+<title>Seven Isn't Thirteen — A Content Engine for AEC Unites | Taylormade Creative</title>
+
+<!-- Open Graph -->
+<meta property="og:title" content="Seven Isn't Thirteen — A Content Engine for AEC Unites">
+<meta property="og:description" content="A 6-slide pitch with two spec reels and three carousels — built before the call. By Taylormade Creative.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="images/reels/aya-reel-poster.jpg">
+<meta property="og:image:width" content="1080">
+<meta property="og:image:height" content="1920">
+<meta property="og:site_name" content="Taylormade Creative">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Seven Isn't Thirteen — A Content Engine for AEC Unites">
+<meta name="twitter:description" content="A 6-slide pitch with two spec reels and three carousels — built before the call.">
+<meta name="twitter:image" content="images/reels/aya-reel-poster.jpg">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23F5C842' width='100' height='100'/%3E%3Ctext x='50' y='72' font-family='Georgia,serif' font-size='80' font-weight='900' text-anchor='middle' fill='%230A0A12' font-style='italic'%3ET%3C/text%3E%3C/svg%3E">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Saira+Condensed:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --blue: #234B8C;
+  --blue-dark: #142E5C;
+  --blue-light: #3A6BB5;
+  --yellow: #F5C842;
+  --yellow-light: #FFD969;
+  --yellow-glow: rgba(245, 200, 66, 0.18);
+  --gray: #B8C0C8;
+  --gray-dark: #6E7780;
+  --cream: #F4F4F0;
+  --off-white: #FAFAF7;
+  --white: #FFFFFF;
+  --ink: #0A0A12;
+  --ink-lift: #13131F;
+  --ink-mid: #2A2A3A;
+  --text-mid: #4A4A5A;
+  --text-light: #8888A0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--ink);
+  color: var(--white);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  line-height: 1.5;
+  font-feature-settings: "ss01", "kern" 1;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+/* TABULAR FIGURES on numeric display elements */
+.cover-num, .opp-cell-num, .gap-bar-num, .why-stat-num, .arc-num {
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+/* ============================================
+   TOP NAV
+   ============================================ */
+.top-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 9990;
+  background: rgba(10, 10, 18, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 0.85rem 4vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transform: translateY(-100%);
+  animation: navSlideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+}
+@keyframes navSlideDown { 0% { transform: translateY(-100%); } 100% { transform: translateY(0); } }
+
+.top-nav-left { display: flex; align-items: center; gap: 0.85rem; }
+.top-nav-mark {
+  width: 28px; height: 28px;
+  background: var(--yellow);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 1rem;
+  color: var(--ink);
+}
+.top-nav-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.top-nav-right {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+
+/* ============================================
+   PROGRESS BAR
+   ============================================ */
+.progress-bar {
+  position: fixed;
+  top: 51px; left: 0;
+  width: 0%; height: 2px;
+  background: linear-gradient(90deg, var(--yellow), var(--yellow-light));
+  z-index: 9999;
+  transition: width 0.1s linear;
+}
+
+/* ============================================
+   GRAIN OVERLAY
+   ============================================ */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+}
+
+/* ============================================
+   REVEAL SYSTEM
+   ============================================ */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left { opacity: 0; transform: translateX(-60px); transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+.reveal-right { opacity: 0; transform: translateX(60px); transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+.reveal-scale { opacity: 0; transform: scale(0.94); transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal-scale.visible { opacity: 1; transform: scale(1); }
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+.stagger-4 { transition-delay: 0.4s; }
+.stagger-5 { transition-delay: 0.5s; }
+.stagger-6 { transition-delay: 0.6s; }
+
+/* ============================================
+   SLIDE BASE
+   ============================================ */
+.slide {
+  width: 100vw;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8rem 6vw;
+}
+.slide-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin-bottom: 1.5rem;
+}
+.slide-eyebrow.dark { color: var(--blue); }
+
+h1, h2, h3, h4 {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+}
+
+.display-headline {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.8rem, 7vw, 6rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+.display-headline em {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--yellow);
+  letter-spacing: -0.01em;
+}
+.display-headline.dark em { color: var(--blue); }
+
+/* ============================================
+   COVER SLIDE
+   ============================================ */
+.cover {
+  background: var(--ink);
+  position: relative;
+  padding: 8rem 6vw 6rem;
+}
+.cover-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+.cover-bg img,
+.cover-bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(1.05) contrast(1.05);
+}
+.cover-bg img { animation: heroKenBurns 28s ease-in-out infinite alternate; }
+@keyframes heroKenBurns {
+  0%   { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.08) translate(-1.5%, -1%); }
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(10,10,18,0.90) 0%, rgba(10,10,18,0.55) 35%, rgba(10,10,18,0.65) 65%, rgba(10,10,18,0.95) 100%),
+    linear-gradient(90deg, rgba(10,10,18,0.78) 0%, rgba(10,10,18,0.42) 38%, transparent 65%, rgba(10,10,18,0.55) 100%);
+  pointer-events: none;
+}
+.cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image:
+    linear-gradient(rgba(245,200,66,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245,200,66,0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at center, black, transparent 90%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black, transparent 90%);
+}
+/* APEX-style: text column LEFT, right-aligned within column, opposite the architect (camera-right) */
+.cover { padding: 0 0 0 0; }
+.cover-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8rem 4vw 6rem;
+  max-width: none;
+  margin: 0;
+}
+.cover-text-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* right-align inside the column — ragged edge points at the architect */
+  text-align: right;
+  width: 100%;
+  max-width: 760px;
+  margin: 0;
+}
+@media (max-width: 900px) {
+  .cover-text-col { max-width: 92%; align-items: flex-start; text-align: left; margin: 0 auto; }
+}
+
+/* Floating top-left brand-mark eyebrow — clears the fixed top-nav (≈48px / ~5vh) */
+.cover-eyebrow-mark {
+  position: absolute;
+  top: 9vh;
+  left: 4vw;
+  z-index: 4;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  max-width: 60vw;
+}
+@media (max-width: 700px) { .cover-eyebrow-mark { font-size: 0.6rem; max-width: 80vw; } }
+
+/* Stacked brutalist headline */
+.cover-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+@media (max-width: 900px) { .cover-stack { align-items: flex-start; } }
+
+.stack-row {
+  font-family: 'Saira Condensed', 'Inter Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(4.5rem, 9.5vw, 11rem);
+  line-height: 0.86;
+  letter-spacing: -0.015em;
+  color: var(--cream);
+  text-transform: uppercase;
+  display: block;
+  text-shadow: 0 6px 30px rgba(0,0,0,0.5);
+}
+
+/* Yellow stat row — the receipt under the headline */
+.stack-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4em;
+  margin-top: 0.5rem;
+  font-family: 'Saira Condensed', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 4.6vw, 5.5rem);
+  line-height: 0.95;
+  color: var(--yellow);
+  letter-spacing: -0.01em;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+.stack-stat-divider {
+  display: inline-block;
+  font-weight: 500;
+  color: rgba(245, 200, 66, 0.45);
+  font-size: 0.85em;
+  transform: translateY(-0.05em);
+}
+.cover-num {
+  font-family: 'Saira Condensed', sans-serif;
+  font-weight: 800;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+.cover-num.left { color: var(--yellow); }
+.cover-num.right { color: var(--yellow); }
+
+/* Italic Playfair kicker */
+.cover-kicker {
+  margin-top: 1.75rem;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.05rem, 1.45vw, 1.45rem);
+  line-height: 1.35;
+  letter-spacing: 0;
+  color: var(--cream);
+  opacity: 0.92;
+  max-width: 36ch;
+}
+.cover-kicker em {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--yellow);
+}
+
+/* Bottom-bleed marquee strip */
+.cover-marquee {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  background: rgba(10, 10, 18, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid rgba(245, 200, 66, 0.25);
+  padding: 0.95rem 4vw;
+  font-family: 'Saira Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cream);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cover-marquee strong { color: var(--yellow); font-weight: 700; }
+.cover-marquee .dot { color: rgba(245, 200, 66, 0.55); margin: 0 0.6em; }
+@media (max-width: 700px) {
+  .cover-marquee { font-size: 0.62rem; letter-spacing: 0.2em; padding: 0.7rem 4vw; }
+}
+
+/* ============================================
+   DARK / LIGHT BASE
+   ============================================ */
+.dark-slide { background: var(--ink); color: var(--white); }
+.dark-slide .slide-eyebrow { color: var(--yellow); }
+.dark-slide .opp-cell-sub, .dark-slide .carousel-desc { color: var(--gray); }
+
+.light-slide { background: var(--cream); color: var(--ink); }
+.light-slide .slide-eyebrow { color: var(--blue); }
+.light-slide .display-headline em { color: var(--blue); }
+
+/* ============================================
+   THE GAP — Bar Comparison (CORRECTED: 7% yellow=urgent, 13% blue=baseline)
+   ============================================ */
+.gap-content { max-width: 1200px; margin: 0 auto; width: 100%; }
+.gap-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-top: 3rem;
+  align-items: stretch;
+}
+@media (max-width: 800px) { .gap-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
+/* SAME CHASSIS — only color shifts. Yellow lands on the urgent numeral only. */
+.gap-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.5rem 1.5rem 1.25rem;
+  background: var(--off-white);
+  border-top: 4px solid rgba(10,10,18,0.10);
+  position: relative;
+}
+.gap-bar.urgent { border-top-color: var(--yellow); }
+.gap-bar-num {
+  font-family: 'Saira Condensed', 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: clamp(3.6rem, 8vw, 7rem);
+  line-height: 0.92;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.4rem;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+.gap-bar-num.baseline { color: var(--ink); background: none; padding: 0; }
+.gap-bar-num.urgent { color: var(--yellow); background: none; padding: 0; }
+.gap-bar-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+}
+/* Proportional bars — same chassis (light track), different fill widths.
+   Reads as a gauge, not two unequal blocks. */
+.gap-bar-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(10,10,18,0.08);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0.85rem;
+}
+.gap-bar-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--ink);
+  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.gap-bar-bar.baseline::after { width: 13%; background: var(--ink); }
+.gap-bar-bar.urgent::after { width: 7%; background: var(--yellow); box-shadow: 0 0 0 1px rgba(245,200,66,0.4); }
+.gap-bar-sub {
+  font-size: 0.85rem;
+  color: var(--text-mid);
+  margin-top: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.05em;
+}
+.gap-callout {
+  margin-top: 4rem;
+  padding: 2rem;
+  background: var(--ink);
+  color: var(--white);
+  border-left: 4px solid var(--yellow);
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-style: italic;
+  line-height: 1.4;
+}
+.gap-callout strong {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  color: var(--yellow);
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+.gap-callout em { color: var(--yellow); font-style: normal; font-family: 'Inter', sans-serif; font-weight: 800; }
+
+/* ============================================
+   THE OPPORTUNITY — Hero $1.2T + ownable numbers in yellow
+   ============================================ */
+.opp-content { max-width: 1300px; margin: 0 auto; width: 100%; }
+.opp-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1px;
+  margin-top: 3rem;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+@media (max-width: 800px) { .opp-grid { grid-template-columns: 1fr; grid-template-rows: auto; } }
+.opp-cell {
+  background: var(--ink);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 240px;
+}
+.opp-cell.hero {
+  grid-row: 1 / 3;
+  background: var(--ink-lift);
+}
+.opp-cell-num {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 5vw, 4.2rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+.opp-cell.hero .opp-cell-num {
+  font-size: clamp(4rem, 8vw, 7rem);
+}
+.opp-cell-num.ownable { color: var(--yellow); }
+.opp-cell-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+}
+.opp-cell-sub {
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+/* ============================================
+   PLATFORM PLAY — LinkedIn-led
+   ============================================ */
+.platform-content { max-width: 1300px; margin: 0 auto; width: 100%; }
+.platform-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  margin-top: 3rem;
+  background: rgba(0,0,0,0.1);
+}
+@media (max-width: 800px) { .platform-grid { grid-template-columns: 1fr; } }
+.platform-cell {
+  background: var(--off-white);
+  padding: 2.5rem;
+  border-top: 6px solid var(--blue);
+}
+.platform-cell.alt { border-top-color: var(--yellow); }
+.platform-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.28em;
+  color: var(--blue);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+.platform-cell.alt .platform-tag { color: var(--ink); background: var(--yellow); padding: 0.2rem 0.5rem; align-self: flex-start; display: inline-block; }
+.platform-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.platform-role {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--blue);
+  margin-bottom: 1.5rem;
+}
+.platform-cell.alt .platform-role { color: var(--ink); }
+.platform-list { list-style: none; }
+.platform-list li {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-mid);
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+.platform-list li:first-child { border-top: none; }
+.platform-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  color: var(--blue);
+  font-weight: 800;
+}
+.platform-cell.alt .platform-list li::before { color: var(--ink); }
+
+/* ============================================
+   FIVE PILLARS
+   ============================================ */
+.pillars-content { max-width: 1300px; margin: 0 auto; width: 100%; }
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
+  margin-top: 3rem;
+}
+@media (max-width: 1100px) { .pillars-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .pillars-grid { grid-template-columns: 1fr; } }
+.pillar {
+  background: var(--off-white);
+  padding: 2rem;
+  border-top: 4px solid var(--blue);
+  display: flex;
+  flex-direction: column;
+  min-height: 280px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: default;
+}
+.pillar:hover { transform: translateY(-6px); box-shadow: 0 30px 60px rgba(35, 75, 140, 0.15); }
+.pillar.featured { border-top-color: var(--yellow); }
+.pillar-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.28em;
+  color: var(--blue);
+  margin-bottom: 1rem;
+}
+.pillar.featured .pillar-num { color: var(--ink); background: var(--yellow); padding: 0.2rem 0.4rem; align-self: flex-start; }
+.pillar-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 1.35rem;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin-bottom: 0.85rem;
+  line-height: 1.15;
+}
+.pillar-desc {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text-mid);
+  flex-grow: 1;
+}
+.pillar-formats {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--text-light);
+  text-transform: uppercase;
+}
+
+/* ============================================
+   CAROUSEL SHOWCASE — Full 6-slide rows
+   ============================================ */
+.carousels-content { max-width: 1500px; margin: 0 auto; width: 100%; }
+.carousels-intro { max-width: 760px; margin-bottom: 4rem; }
+.carousel-block { margin-bottom: 5rem; }
+.carousel-block:last-child { margin-bottom: 0; }
+.carousel-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 2rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+.carousel-pillar-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  color: var(--yellow);
+  text-transform: uppercase;
+}
+.carousel-block-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.5rem, 2.4vw, 2.2rem);
+  letter-spacing: -0.025em;
+  color: var(--white);
+  line-height: 1.1;
+}
+.carousel-block-desc {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--gray);
+  max-width: 720px;
+  margin-bottom: 2rem;
+}
+.carousel-strip {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 0.5rem 0 1.5rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--yellow) rgba(255,255,255,0.05);
+}
+.carousel-strip::-webkit-scrollbar { height: 6px; }
+.carousel-strip::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+.carousel-strip::-webkit-scrollbar-thumb { background: var(--yellow); border-radius: 3px; }
+.carousel-slide {
+  flex: 0 0 auto;
+  width: clamp(220px, 22vw, 320px);
+  aspect-ratio: 4 / 5;
+  background: var(--ink-lift);
+  scroll-snap-align: start;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.carousel-slide:hover { transform: translateY(-6px); }
+.carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
+.carousel-slide-num {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: rgba(10,10,18,0.85);
+  color: var(--yellow);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  padding: 0.3rem 0.55rem;
+  z-index: 2;
+}
+.carousel-hint {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  color: var(--yellow);
+  text-transform: uppercase;
+  margin-top: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid rgba(245,200,66,0.35);
+  background: rgba(245,200,66,0.06);
+}
+.carousel-hint::before { content: '⇄'; color: var(--yellow); font-size: 1rem; line-height: 1; }
+.carousel-hint::after { content: '→'; color: var(--yellow); font-size: 0.9rem; line-height: 1; opacity: 0.6; }
+
+/* ============================================
+   90-DAY ARC — measurement / results slide
+   ============================================ */
+.arc-content { max-width: 1300px; margin: 0 auto; width: 100%; }
+.arc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  margin-top: 3rem;
+  background: rgba(10,10,18,0.10);
+  box-shadow: 0 24px 60px rgba(10,10,18,0.10), 0 0 0 1px rgba(10,10,18,0.06);
+}
+@media (max-width: 900px) { .arc-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 500px) { .arc-grid { grid-template-columns: 1fr; } }
+.arc-cell {
+  background: var(--white);
+  padding: 2.25rem 1.5rem;
+  border-top: 4px solid var(--blue);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.arc-cell.now {
+  background: #ECECE6;
+  border-top-color: var(--gray-dark);
+}
+.arc-cell.now .arc-num,
+.arc-cell.now .arc-label,
+.arc-cell.now .arc-list li { color: var(--text-mid); }
+.arc-cell.day-90 {
+  background: var(--ink);
+  color: var(--white);
+  border-top: 4px solid var(--yellow);
+  position: relative;
+  transform: translateY(-12px);
+  box-shadow: 0 36px 80px rgba(10,10,18,0.35), 0 0 0 1px var(--yellow);
+}
+@media (max-width: 900px) { .arc-cell.day-90 { transform: none; } }
+.arc-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.28em;
+  color: var(--blue);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+.arc-cell.now .arc-tag { color: var(--gray-dark); }
+.arc-cell.day-90 .arc-tag {
+  color: var(--ink);
+  background: var(--yellow);
+  padding: 0.25rem 0.55rem;
+  align-self: flex-start;
+}
+.arc-num {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+.arc-cell.day-90 .arc-num { color: var(--yellow); }
+.arc-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-mid);
+  margin-bottom: 1.25rem;
+}
+.arc-cell.day-90 .arc-label { color: var(--gray); }
+.arc-list {
+  list-style: none;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  padding-top: 1rem;
+}
+.arc-cell.day-90 .arc-list { border-top-color: rgba(255,255,255,0.12); }
+.arc-list li {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-mid);
+  margin-bottom: 0.6rem;
+  padding-left: 1rem;
+  position: relative;
+}
+.arc-cell.day-90 .arc-list li { color: var(--gray); }
+.arc-list li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--blue);
+  font-weight: 800;
+  font-size: 1.4rem;
+  line-height: 0.7;
+}
+.arc-cell.day-90 .arc-list li::before { color: var(--yellow); }
+
+.arc-kpis {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: var(--ink);
+  color: var(--white);
+  border-left: 4px solid var(--yellow);
+}
+.arc-kpis-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  color: var(--yellow);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.arc-kpis ul { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+@media (max-width: 700px) { .arc-kpis ul { grid-template-columns: 1fr; } }
+.arc-kpis li {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.arc-kpis li strong {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+  color: var(--white);
+}
+
+/* ============================================
+   THE WORK / WHY ME
+   ============================================ */
+.why-content { max-width: 1200px; margin: 0 auto; width: 100%; }
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+@media (max-width: 800px) { .why-grid { grid-template-columns: 1fr; } }
+.why-stat {
+  border-top: 1px solid rgba(0,0,0,0.1);
+  padding-top: 1.5rem;
+}
+.why-stat-num {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--blue);
+  margin-bottom: 0.5rem;
+}
+.why-stat-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.015em;
+}
+.why-stat-desc {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text-mid);
+}
+
+/* ============================================
+   SLIDE-DOT NAV RAIL — sticky right side
+   ============================================ */
+.slide-dots {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9991;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 12px 8px;
+  background: rgba(10, 10, 18, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.08);
+  opacity: 0;
+  animation: dotsFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.5s forwards;
+}
+@keyframes dotsFadeIn { to { opacity: 1; } }
+.slide-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.30);
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  padding: 0;
+  display: block;
+  flex-shrink: 0;
+}
+.slide-dot:hover { background: rgba(245,200,66,0.7); transform: scale(1.2); }
+.slide-dot.active {
+  background: var(--yellow);
+  width: 10px;
+  height: 28px;
+  border-radius: 999px;
+  box-shadow: 0 0 14px rgba(245,200,66,0.5);
+}
+.slide-dot::after {
+  content: attr(data-label);
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%) translateX(8px);
+  background: rgba(10, 10, 18, 0.95);
+  color: var(--white);
+  padding: 8px 14px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+  border: 1px solid rgba(245,200,66,0.25);
+}
+.slide-dot:hover::after { opacity: 1; transform: translateY(-50%) translateX(0); }
+@media (max-width: 900px) { .slide-dots { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .slide-dots { animation: none; opacity: 1; }
+  .slide-dot, .slide-dot::after { transition: none; }
+}
+
+/* Skip-to-content link for keyboard users */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99999;
+  padding: 12px 20px;
+  background: var(--yellow);
+  color: var(--ink);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: top 0.3s;
+}
+.skip-link:focus { top: 12px; outline: 2px solid var(--white); outline-offset: 2px; }
+
+/* ============================================
+   ENGINE SLIDE — text + "in the wild" preview
+   ============================================ */
+.engine-top {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 4rem;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+@media (max-width: 1000px) {
+  .engine-top { grid-template-columns: 1fr; gap: 2.5rem; }
+  .engine-preview { max-width: 360px; margin: 0 auto; }
+}
+.engine-preview {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(245,200,66,0.18);
+}
+.engine-preview img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.engine-preview-tag {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  color: var(--yellow);
+  text-transform: uppercase;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.engine-preview-tag::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--yellow);
+}
+.engine-preview::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(10,10,18,0.55) 100%);
+  pointer-events: none;
+}
+
+/* ============================================
+   STAKES SLIDE — split layout with hero portrait
+   ============================================ */
+.gap-content.with-hero {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+@media (max-width: 1000px) { .gap-content.with-hero { grid-template-columns: 1fr; gap: 3rem; } }
+.gap-hero {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  max-height: 78vh;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 40px 100px rgba(10,10,18,0.20), 0 0 0 1px rgba(10,10,18,0.08);
+}
+.gap-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.gap-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(10,10,18,0.45) 100%);
+  pointer-events: none;
+}
+.gap-hero-tag {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  color: var(--yellow);
+  text-transform: uppercase;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.gap-hero-tag::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 2px;
+  background: var(--yellow);
+}
+
+/* ============================================
+   NEXT STEP — tower hero band at top
+   ============================================ */
+.nextstep-hero {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 5.5;
+  margin: -8rem -6vw 3rem;
+  width: calc(100% + 12vw);
+  overflow: hidden;
+}
+.nextstep-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  display: block;
+}
+.nextstep-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(10,10,18,0.35) 0%, rgba(244,244,240,0) 50%, rgba(244,244,240,1) 100%),
+    linear-gradient(90deg, rgba(10,10,18,0.35) 0%, transparent 30%);
+  pointer-events: none;
+}
+.nextstep-hero-tag {
+  position: absolute;
+  top: 24px;
+  left: 6vw;
+  z-index: 2;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  color: var(--yellow);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.nextstep-hero-tag::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 2px;
+  background: var(--yellow);
+}
+
+/* ============================================
+   SPEC REELS — iPhone mockup gallery
+   ============================================ */
+.reels-content { max-width: 1300px; margin: 0 auto; width: 100%; }
+.reels-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem;
+  margin-top: 4rem;
+  align-items: start;
+  justify-items: center;
+}
+@media (max-width: 900px) { .reels-grid { grid-template-columns: 1fr; gap: 4.5rem; } }
+
+.reel-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 360px;
+  position: relative;
+}
+
+/* iPhone 15 Pro mockup — pure CSS */
+.iphone {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 19.5;
+  background: linear-gradient(135deg, #1A1A22 0%, #0E0E14 100%);
+  border-radius: 14% / 6.4%;
+  padding: 3.2% 3.2% 3.2%;
+  box-shadow:
+    0 60px 120px -20px rgba(0,0,0,0.7),
+    0 30px 60px -10px rgba(0,0,0,0.5),
+    0 0 0 2px rgba(255,255,255,0.04),
+    inset 0 0 0 1.5px rgba(255,255,255,0.10),
+    inset 0 0 0 3px rgba(0,0,0,0.6),
+    inset 0 0 0 4.5px rgba(255,255,255,0.05);
+  cursor: pointer;
+  transform: translateY(0);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.iphone:hover {
+  transform: translateY(-10px);
+  box-shadow:
+    0 80px 140px -20px rgba(0,0,0,0.75),
+    0 40px 70px -10px rgba(245, 200, 66, 0.12),
+    0 0 0 2px rgba(245, 200, 66, 0.15),
+    inset 0 0 0 1.5px rgba(255,255,255,0.10),
+    inset 0 0 0 3px rgba(0,0,0,0.6),
+    inset 0 0 0 4.5px rgba(255,255,255,0.05);
+}
+
+/* Bezel highlight — iPhone aluminum sheen */
+.iphone::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 14% / 6.4%;
+  pointer-events: none;
+  background:
+    linear-gradient(140deg, rgba(255,255,255,0.10) 0%, transparent 8%, transparent 92%, rgba(255,255,255,0.06) 100%),
+    linear-gradient(0deg, rgba(0,0,0,0.3) 0%, transparent 5%, transparent 95%, rgba(0,0,0,0.3) 100%);
+}
+
+/* Dynamic Island — sits ON the screen, not in the bezel (matches real iPhone 15 Pro) */
+.iphone-island {
+  position: absolute;
+  top: 4.4%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30%;
+  height: 3.4%;
+  background: #000;
+  border-radius: 999px;
+  z-index: 4;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06), 0 0 0 1px rgba(0,0,0,0.4);
+}
+/* Status-bar gradient gives the island visual context — kills the "sticker" feel */
+.iphone-screen::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 10%;
+  background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 100%);
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Side buttons */
+.iphone-btn-left { position: absolute; left: -2px; top: 18%; width: 3px; height: 4%; background: linear-gradient(90deg, #2A2A32, #15151A); border-radius: 2px 0 0 2px; z-index: 1; }
+.iphone-btn-vol-up { position: absolute; left: -2px; top: 26%; width: 3px; height: 7%; background: linear-gradient(90deg, #2A2A32, #15151A); border-radius: 2px 0 0 2px; z-index: 1; }
+.iphone-btn-vol-down { position: absolute; left: -2px; top: 35%; width: 3px; height: 7%; background: linear-gradient(90deg, #2A2A32, #15151A); border-radius: 2px 0 0 2px; z-index: 1; }
+.iphone-btn-power { position: absolute; right: -2px; top: 24%; width: 3px; height: 10%; background: linear-gradient(270deg, #2A2A32, #15151A); border-radius: 0 2px 2px 0; z-index: 1; }
+
+.iphone-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 11% / 5%;
+  overflow: hidden;
+  background: #000;
+  z-index: 2;
+}
+.iphone-screen video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Tap-to-play CTA, brighter so the affordance is unmistakable */
+.iphone-cta {
+  position: absolute;
+  bottom: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--yellow);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid rgba(245,200,66,0.5);
+  box-shadow: 0 6px 20px rgba(10,10,18,0.35);
+  white-space: nowrap;
+  opacity: 0.92;
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+}
+.iphone:hover .iphone-cta { opacity: 1; transform: translateX(-50%) translateY(-2px); }
+
+/* "LIVE / SPEC" pulse */
+.iphone-pulse {
+  position: absolute;
+  top: 7%;
+  right: 6%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: rgba(10, 10, 18, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.18);
+  pointer-events: none;
+}
+.iphone-pulse::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--yellow);
+  box-shadow: 0 0 0 0 rgba(245, 200, 66, 0.8);
+  animation: pulseDot 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+@keyframes pulseDot {
+  0% { box-shadow: 0 0 0 0 rgba(245, 200, 66, 0.8); }
+  70% { box-shadow: 0 0 0 8px rgba(245, 200, 66, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(245, 200, 66, 0); }
+}
+
+/* Card meta below the phone */
+.reel-meta {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  text-align: center;
+}
+.reel-meta-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.32em;
+  color: var(--yellow);
+  text-transform: uppercase;
+}
+.reel-meta-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.015em;
+  color: var(--white);
+  line-height: 1.2;
+}
+.reel-meta-title em { color: var(--yellow); font-style: italic; font-weight: 700; }
+.reel-meta-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--gray);
+  max-width: 320px;
+}
+.reel-meta-stats {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  color: var(--text-light);
+  text-transform: uppercase;
+  margin-top: 0.4rem;
+}
+.reel-meta-stats span strong { color: var(--white); font-weight: 600; }
+
+/* "Why this matters" footer band */
+.reels-foot {
+  margin-top: 4rem;
+  padding: 2rem;
+  background: rgba(245, 200, 66, 0.06);
+  border-left: 4px solid var(--yellow);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+@media (max-width: 700px) { .reels-foot { grid-template-columns: 1fr; gap: 1rem; } }
+.reels-foot-num {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 3.5rem;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--yellow);
+}
+.reels-foot-text {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--white);
+}
+.reels-foot-text strong { color: var(--yellow); }
+
+/* ============================================
+   WHY NOT AN AGENCY — comparison table
+   ============================================ */
+.versus-content { max-width: 1280px; margin: 0 auto; width: 100%; }
+.versus-grid {
+  margin-top: 3rem;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.015);
+}
+.versus-head {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  align-items: end;
+  gap: 0;
+  padding: 1.25rem 1.75rem;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.02);
+}
+.versus-head-axis {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+.versus-head-col {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  text-transform: none;
+}
+.versus-head-col.them {
+  color: var(--gray);
+  border-left: 1px solid rgba(255,255,255,0.08);
+  padding-left: 1.25rem;
+}
+.versus-head-col.us {
+  color: var(--yellow);
+  border-left: 1px solid var(--yellow);
+  padding-left: 1.25rem;
+}
+.versus-head-col-sub {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.32em;
+  color: var(--text-light);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+  font-weight: 400;
+}
+.versus-row {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  gap: 0;
+  padding: 1.5rem 1.75rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  align-items: start;
+}
+.versus-row:last-child { border-bottom: none; }
+.versus-axis {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: -0.015em;
+  color: var(--white);
+  padding-right: 1.5rem;
+}
+.versus-axis-num {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.28em;
+  color: var(--text-light);
+  font-weight: 400;
+  margin-bottom: 0.35rem;
+}
+.versus-them, .versus-us {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  padding-left: 1.25rem;
+  border-left: 1px solid rgba(255,255,255,0.08);
+}
+.versus-them { color: var(--text-light); }
+.versus-us { color: var(--white); border-left-color: var(--yellow); }
+.versus-us strong { color: var(--yellow); font-weight: 700; }
+.versus-foot {
+  margin-top: 2rem;
+  padding: 1.5rem 1.75rem;
+  background: rgba(245, 200, 66, 0.06);
+  border-left: 4px solid var(--yellow);
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--white);
+}
+.versus-foot strong { color: var(--yellow); }
+@media (max-width: 800px) {
+  .versus-head, .versus-row { grid-template-columns: 1fr; gap: 0.75rem; }
+  .versus-head-col.them, .versus-head-col.us,
+  .versus-them, .versus-us { border-left: none; padding-left: 0; }
+  .versus-them { padding-top: 0.4rem; border-top: 1px dashed rgba(255,255,255,0.08); }
+  .versus-us { padding-top: 0.4rem; border-top: 1px solid var(--yellow); }
+}
+
+/* ============================================
+   ENGAGEMENT MODELS
+   ============================================ */
+.engage-content { max-width: 1300px; margin: 0 auto; width: 100%; }
+.engage-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+  align-items: stretch;
+}
+@media (max-width: 900px) { .engage-grid { grid-template-columns: 1fr; } }
+.engage-card {
+  background: var(--off-white);
+  border: 1px solid rgba(0,0,0,0.08);
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 420px;
+  transition: transform 0.4s ease;
+}
+.engage-card:hover { transform: translateY(-6px); }
+.engage-card.featured {
+  background: var(--ink-lift);
+  color: var(--white);
+  border-color: var(--yellow);
+  box-shadow: 0 40px 80px rgba(245, 200, 66, 0.10), 0 0 0 1px var(--yellow);
+  transform: scale(1.04);
+  transform-origin: center bottom;
+  z-index: 2;
+}
+.engage-card.featured:hover { transform: scale(1.04) translateY(-6px); }
+.engage-card.featured .engage-name { color: var(--yellow); }
+.engage-card.featured .engage-desc, .engage-card.featured .engage-includes li { color: var(--gray); }
+.engage-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.28em;
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+.engage-card.featured .engage-tag { color: var(--yellow); }
+.engage-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin-bottom: 0.85rem;
+  line-height: 1.15;
+}
+.engage-desc {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text-mid);
+  margin-bottom: 1.5rem;
+}
+.engage-includes {
+  list-style: none;
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+.engage-card.featured .engage-includes { border-top-color: rgba(255,255,255,0.12); }
+.engage-includes li {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-mid);
+  margin-bottom: 0.6rem;
+  padding-left: 1.2rem;
+  position: relative;
+}
+.engage-includes li::before {
+  content: '+';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--blue);
+  font-weight: 800;
+}
+.engage-card.featured .engage-includes li::before { color: var(--yellow); }
+
+.engage-foot {
+  margin-top: 3rem;
+  padding: 1.5rem 2rem;
+  background: var(--ink-lift);
+  color: var(--gray);
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  border-left: 3px solid var(--yellow);
+}
+.engage-foot strong { color: var(--yellow); font-style: normal; font-family: 'Inter', sans-serif; font-weight: 700; }
+
+/* ============================================
+   CTA / NEXT STEP
+   ============================================ */
+.cta-slide {
+  background: var(--ink);
+  text-align: center;
+  padding: 12rem 6vw;
+  position: relative;
+}
+.cta-slide::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(245, 200, 66, 0.15), transparent 60%);
+  pointer-events: none;
+}
+.cta-slide::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(245,200,66,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245,200,66,0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at center, black, transparent 65%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black, transparent 65%);
+}
+.cta-content { max-width: 900px; margin: 0 auto; position: relative; z-index: 2; }
+.cta-headline {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  margin-bottom: 2rem;
+}
+.cta-headline em {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--yellow);
+}
+.cta-sub {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.45;
+  color: var(--gray);
+  margin-bottom: 3rem;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 4rem;
+}
+.cta-btn {
+  display: inline-block;
+  padding: 1.1rem 2.2rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+.cta-btn.primary { background: var(--yellow); color: var(--ink); }
+.cta-btn.primary:hover { background: var(--yellow-light); transform: translateY(-2px); }
+.cta-btn.secondary { background: transparent; color: var(--white); border-color: rgba(255,255,255,0.3); }
+.cta-btn.secondary:hover { border-color: var(--yellow); color: var(--yellow); }
+
+.signature {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+.signature > div {
+  padding: 0 2rem;
+  border-left: 1px solid rgba(255,255,255,0.08);
+}
+.signature > div:first-child { border-left: none; }
+.signature strong { color: var(--white); font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 0; text-transform: none; display: block; margin-top: 0.4rem; }
+.signature a { color: var(--yellow); text-decoration: none; }
+
+/* ============================================
+   AYA REEL — floating phone-frame on cover
+   ============================================ */
+.aya-frame {
+  position: absolute;
+  bottom: 4vh;
+  right: 4vw;
+  z-index: 4;
+  width: clamp(180px, 18vw, 260px);
+  aspect-ratio: 9 / 16;
+  background: #000;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(245, 200, 66, 0.4),
+    0 30px 80px rgba(0, 0, 0, 0.6),
+    0 0 60px rgba(245, 200, 66, 0.18);
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  opacity: 0;
+  transform: translateY(40px) scale(0.92);
+  animation: ayaFrameIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) 1.6s forwards;
+}
+@keyframes ayaFrameIn {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.aya-frame:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow:
+    0 0 0 2px rgba(245, 200, 66, 0.6),
+    0 40px 100px rgba(0, 0, 0, 0.7),
+    0 0 80px rgba(245, 200, 66, 0.28);
+}
+.aya-frame video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+.aya-frame-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--yellow);
+  padding: 0.3rem 0.55rem;
+  font-weight: 700;
+}
+.aya-frame-pulse {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #FF3B30;
+  box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.6);
+  animation: ayaPulse 2s ease-out infinite;
+}
+@keyframes ayaPulse {
+  0%   { box-shadow: 0 0 0 0   rgba(255, 59, 48, 0.6); }
+  70%  { box-shadow: 0 0 0 14px rgba(255, 59, 48, 0); }
+  100% { box-shadow: 0 0 0 0   rgba(255, 59, 48, 0); }
+}
+.aya-frame-cta {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  right: 14px;
+  z-index: 2;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: rgba(10,10,18,0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 0.45rem 0.5rem;
+  font-weight: 600;
+  pointer-events: none;
+}
+@media (max-width: 900px) {
+  .aya-frame {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin: 3rem auto 0;
+    width: 200px;
+    animation-delay: 0.8s;
+  }
+}
+
+/* ============================================
+   LIGHTBOX (carousel slide modal)
+   ============================================ */
+.lb-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10,10,18,0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 10000;
+  cursor: zoom-out;
+}
+.lb-overlay.open { opacity: 1; }
+.lb-overlay img {
+  max-width: 92vw;
+  max-height: 92vh;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+  cursor: default;
+}
+.lb-close {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  background: var(--yellow);
+  color: var(--ink);
+  border: 0;
+  width: 48px;
+  height: 48px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  display: grid;
+  place-items: center;
+  transition: transform 0.2s ease;
+}
+.lb-close:hover { transform: scale(1.08); }
+.lb-counter {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  color: var(--yellow);
+  text-transform: uppercase;
+  background: rgba(10,10,18,0.7);
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(245,200,66,0.3);
+}
+
+/* Carousel grab cursor */
+.carousel-strip { cursor: grab; }
+.carousel-strip:active { cursor: grabbing; }
+.carousel-strip:focus { outline: 2px solid var(--yellow); outline-offset: 4px; }
+.carousel-slide { cursor: zoom-in; user-select: none; }
+.carousel-slide img { pointer-events: none; }
+
+/* ============================================
+   MOBILE STICKY CTA + EDGE FADES
+   ============================================ */
+.mobile-cta {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 9995;
+  background: var(--yellow);
+  color: var(--ink);
+  padding: 1rem;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-decoration: none;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 -8px 24px rgba(0,0,0,0.3);
+}
+.mobile-cta.show { transform: translateY(0); }
+
+@media (max-width: 768px) {
+  .mobile-cta { display: block; }
+  .carousel-strip {
+    mask-image: linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
+  }
+  body { padding-bottom: 56px; }
+}
+
+/* ============================================
+   MOBILE
+   ============================================ */
+@media (max-width: 600px) {
+  .slide { padding: 6rem 6vw; }
+  .top-nav { padding: 0.7rem 4vw; }
+  .top-nav-text { font-size: 0.55rem; }
+  .top-nav-right { display: none; }
+  .progress-bar { top: 45px; }
+  .signature > div { border-left: none; padding: 1rem 0; }
+  .cover-num { text-shadow: 0 4px 20px rgba(0,0,0,0.7); }
+}
+
+/* ============================================
+   PRINT STYLESHEET — board handout
+   ============================================ */
+@media print {
+  @page { size: letter; margin: 0.5in; }
+  html, body { background: #fff !important; color: #111 !important; }
+  body::after, .top-nav, .progress-bar, .carousel-hint, .cta-buttons, .mobile-cta, .lb-overlay, .slide-dots, .skip-link { display: none !important; }
+  .slide { page-break-after: always; min-height: auto; padding: 0.4in 0; break-inside: avoid; }
+  .dark-slide, .cover, .cta-slide { background: #fff !important; color: #111 !important; }
+  .dark-slide *, .cover *, .cta-slide * { color: #111 !important; }
+  .cover-bg { display: none !important; }
+  .cover::before, .cover::after { display: none !important; }
+  .reveal, .reveal-left, .reveal-right, .reveal-scale { opacity: 1 !important; transform: none !important; }
+  .cover-num.left { color: #234B8C !important; text-shadow: none !important; }
+  .cover-num.right, .gap-bar-num.urgent { color: #B8860B !important; background: none !important; text-shadow: none !important; }
+  .opp-cell-num.ownable, .pillar.featured .pillar-num, .engage-card.featured .engage-name, .arc-cell.day-90 .arc-tag { color: #B8860B !important; background: none !important; }
+  .engage-card.featured { background: #fff !important; transform: none !important; box-shadow: 0 0 0 1px #B8860B !important; }
+  .carousel-strip { display: grid !important; grid-template-columns: repeat(3, 1fr); gap: 0.2in; overflow: visible !important; mask: none !important; -webkit-mask: none !important; }
+  .carousel-slide { width: auto !important; min-width: 0 !important; box-shadow: 0 0 0 1px #ddd !important; }
+  a[href^="http"]::after, a[href^="mailto"]::after { content: " (" attr(href) ")"; font-size: 9pt; color: #666; }
+}
+</style>
+</head>
+<body>
+
+<!-- SKIP TO CONTENT (keyboard users) -->
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<!-- SLIDE-DOT NAV (jump between the 6 slides) -->
+<nav class="slide-dots" aria-label="Slide navigation">
+  <button class="slide-dot active" data-target="0" data-label="Cover" aria-label="Go to Cover"></button>
+  <button class="slide-dot" data-target="1" data-label="The Stakes" aria-label="Go to The Stakes"></button>
+  <button class="slide-dot" data-target="2" data-label="The Engine" aria-label="Go to The Engine"></button>
+  <button class="slide-dot" data-target="3" data-label="Built On Spec" aria-label="Go to Built On Spec"></button>
+  <button class="slide-dot" data-target="4" data-label="Why Us" aria-label="Go to Why Us"></button>
+  <button class="slide-dot" data-target="5" data-label="Next Step" aria-label="Go to Next Step"></button>
+</nav>
+
+<main id="main-content">
+
+<!-- TOP NAV -->
+<div class="top-nav">
+  <div class="top-nav-left">
+    <div class="top-nav-mark">T</div>
+    <div class="top-nav-text">Taylormade Creative × AEC Unites</div>
+  </div>
+  <div class="top-nav-right">04 / 2026 · Pitch Deck</div>
+</div>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- MOBILE STICKY CTA -->
+<a href="mailto:taylormademd@gmail.com?subject=AEC%20Unites%20%E2%80%94%20Content%20Engine%20Pilot%20Call" class="mobile-cta" id="mobileCta">Book the Intro Call →</a>
+
+<!-- ============================================
+     SLIDE 1 — COVER
+     ============================================ -->
+<section class="slide cover">
+  <div class="cover-bg" aria-hidden="true">
+    <video
+      src="images/hero-cover-architect.mp4"
+      poster="images/hero-cover-architect-poster.jpg"
+      autoplay muted loop playsinline preload="auto">
+    </video>
+  </div>
+
+  <!-- Floating top-left mono eyebrow (outside the text column, brand-mark style) -->
+  <div class="cover-eyebrow-mark reveal">— A Social Media Content Engine for AEC Unites</div>
+
+  <div class="cover-content">
+    <div class="cover-text-col">
+      <div class="cover-stack">
+        <span class="stack-row reveal stagger-1">Seven</span>
+        <span class="stack-row reveal stagger-2">Isn't</span>
+        <span class="stack-row reveal stagger-3">Thirteen.</span>
+        <span class="stack-stat reveal stagger-4">
+          <span class="cover-num left" data-morph="num-7">7%</span>
+          <span class="stack-stat-divider">/</span>
+          <span class="cover-num right" data-morph="num-13">13%</span>
+        </span>
+      </div>
+
+      <p class="cover-kicker reveal stagger-5">
+        Black workers are <em>13%</em> of the U.S. workforce. Only <em>7%</em> of construction. The math doesn't add up — yet. Let's tell that story to <em>every</em> screen that matters.
+      </p>
+    </div>
+  </div>
+
+  <!-- Bottom-bleed marquee -->
+  <div class="cover-marquee reveal stagger-5">
+    Prepared for <strong>AEC Unites</strong><span class="dot">·</span>By <strong>Nelson Taylor</strong><span class="dot">·</span>Taylormade Creative<span class="dot">·</span>April 30, 2026<span class="dot">·</span><strong>Scroll for the pitch →</strong>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 2 — THE STAKES (Gap + Opportunity merged)
+     ============================================ -->
+<section class="slide light-slide">
+  <div class="gap-content with-hero">
+    <div>
+      <div class="slide-eyebrow reveal">01 / The Stakes</div>
+      <h2 class="display-headline reveal stagger-1" style="color: var(--ink); max-width: 720px;">
+        The <em>mission</em> is heavy. The <em>visibility</em> isn't.
+      </h2>
+
+      <div class="gap-grid reveal-scale stagger-2">
+        <div class="gap-bar baseline">
+          <div class="gap-bar-num baseline" data-morph-target="num-13">13%</div>
+          <div class="gap-bar-label">Black share of U.S. workforce</div>
+          <div class="gap-bar-bar baseline"></div>
+          <div class="gap-bar-sub">U.S. Bureau of Labor Statistics, 2023</div>
+        </div>
+        <div class="gap-bar urgent">
+          <div class="gap-bar-num urgent" data-morph-target="num-7">7%</div>
+          <div class="gap-bar-label">Black share of AEC industry</div>
+          <div class="gap-bar-bar urgent"></div>
+          <div class="gap-bar-sub">McKissack &amp; McKissack, 2022</div>
+        </div>
+      </div>
+
+      <div class="gap-callout reveal stagger-3">
+        <strong>$1.2 Trillion in federal infrastructure is in motion.</strong>
+        Your board is the heaviest in U.S. construction — Turner, Gensler, HOK, Hensel Phelps, Moody Nolan, H.J. Russell, McKissack. Your Instagram is sitting at <em>186 followers</em>. The substance is there. What's missing is the engine.
+      </div>
+    </div>
+
+    <div class="gap-hero reveal-scale stagger-2">
+      <img src="images/stakes-engineer-portrait.png" alt="Black woman engineer in hard hat and hi-vis vest on an active construction site at golden hour">
+      <div class="gap-hero-tag">The face of the gap · The face of the engine</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 3 — THE ENGINE (Platform Play + Pillars merged)
+     ============================================ -->
+<section class="slide dark-slide">
+  <div class="pillars-content">
+    <div class="engine-top">
+      <div class="engine-text">
+        <div class="slide-eyebrow reveal">02 / The Engine</div>
+        <h2 class="display-headline reveal stagger-1" style="max-width: 720px;">
+          A content engine. Five <em>pillars</em>. <em>LinkedIn-led</em>.
+        </h2>
+        <p class="reveal stagger-2" style="margin-top: 1.5rem; font-size: 1.05rem; line-height: 1.55; color: var(--gray);">
+          Your decision-makers live on LinkedIn — that's where membership and sponsorship close. Your future workforce lives on Instagram — that's where the next generation finds you. Same engine, different cuts. Anchored by a monthly LinkedIn Newsletter, <em style="color: var(--yellow); font-style: normal;">"The AEC Gap"</em>, that force-notifies your 3.5K LinkedIn followers every issue.
+        </p>
+      </div>
+      <div class="engine-preview reveal-scale stagger-3">
+        <img src="images/engine-phone-jobsite.png" loading="lazy" decoding="async" alt="A phone showing an AEC Unites Instagram post with the 13%/7% data card, held in a construction worker's hand on an active job site">
+        <div class="engine-preview-tag">In the wild · on the job site</div>
+      </div>
+    </div>
+
+    <div class="pillars-grid">
+      <div class="pillar featured reveal stagger-1">
+        <div class="pillar-num">PILLAR 01</div>
+        <div class="pillar-title">The Numbers</div>
+        <div class="pillar-desc">Industry data, turned into shareable carousels. The 7%/13% gap, federal spend tracking, where the pipeline leaks. The IP only AEC Unites can own.</div>
+        <div class="pillar-formats">Carousels · Stat singles · Motion Reels</div>
+      </div>
+      <div class="pillar reveal stagger-2">
+        <div class="pillar-num">PILLAR 02</div>
+        <div class="pillar-title">Member Spotlights</div>
+        <div class="pillar-desc">A monthly feature on every member firm — Russell, Moody Nolan, McKissack, Turner, Gensler, HOK, Corenic. The board IS the proof.</div>
+        <div class="pillar-formats">LI doc carousels · CEO Reels · Project showcases</div>
+      </div>
+      <div class="pillar reveal stagger-3">
+        <div class="pillar-num">PILLAR 03</div>
+        <div class="pillar-title">Talent Journeys</div>
+        <div class="pillar-desc">From HBCU to high-rise. Real students, scholarship recipients, cohort grads, interns. The pipeline AEC Unites is building — humanized.</div>
+        <div class="pillar-formats">Reels · Carousels · Day-in-the-life</div>
+      </div>
+      <div class="pillar reveal stagger-4">
+        <div class="pillar-num">PILLAR 04</div>
+        <div class="pillar-title">Events</div>
+        <div class="pillar-desc">Black Business Mixer, Construction Inclusion Week, webinars. Each event is a 3-week content arc — buildup, day-of, recap. Not a single post.</div>
+        <div class="pillar-formats">Recap Reels · Carousels · Stories</div>
+      </div>
+      <div class="pillar reveal stagger-5">
+        <div class="pillar-num">PILLAR 05</div>
+        <div class="pillar-title">The Playbook</div>
+        <div class="pillar-desc">Practical, sponsor-friendly content for both sides — Black-owned firms scaling up, primes learning to actually work with them. Bonding, federal contracts, cohort applications.</div>
+        <div class="pillar-formats">LI carousels · Educational Reels · Long-form</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 4 — BUILT ON SPEC (Reels + Carousels merged)
+     ============================================ -->
+<section class="slide dark-slide">
+  <div class="reels-content">
+    <div class="slide-eyebrow reveal">03 / Built On Spec</div>
+    <h2 class="display-headline reveal stagger-1" style="max-width: 1100px;">
+      Two reels. Three carousels.<br>All before the call.
+    </h2>
+    <p class="reveal stagger-2" style="max-width: 880px; margin-top: 1.25rem; font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; font-size: clamp(1.3rem, 1.8vw, 1.7rem); line-height: 1.3; color: var(--yellow);">
+      Eighteen finished slides &mdash; in your colors, ready to post.
+    </p>
+    <p class="reveal stagger-3" style="max-width: 880px; margin-top: 1.25rem; font-size: 1.05rem; line-height: 1.55; color: var(--gray);">
+      AYA carries Pillar 01 &mdash; <em style="color: var(--yellow); font-style: normal;">The Gap</em>. NIA carries Pillar 03 &mdash; <em style="color: var(--yellow); font-style: normal;">HBCU to High-Rise</em>. Tap either phone to watch with sound.
+    </p>
+
+    <div class="reels-grid reveal stagger-3">
+
+      <div class="reel-card">
+        <div class="iphone" data-reel="aya" tabindex="0" role="button" aria-label="Play AYA — The Numbers Reel with sound">
+          <div class="iphone-btn-left"></div>
+          <div class="iphone-btn-vol-up"></div>
+          <div class="iphone-btn-vol-down"></div>
+          <div class="iphone-btn-power"></div>
+          <div class="iphone-island"></div>
+          <div class="iphone-screen">
+            <video src="images/reels/aya-reel-web.mp4" poster="images/reels/aya-reel-poster.jpg" muted loop playsinline preload="metadata" autoplay></video>
+          </div>
+          <div class="iphone-pulse">SPEC · 38s</div>
+          <div class="iphone-cta">▶ Tap to watch with sound</div>
+        </div>
+        <div class="reel-meta">
+          <div class="reel-meta-tag">Pillar 01 · The Gap</div>
+          <div class="reel-meta-title">AYA — <em>The Numbers</em> Reel</div>
+          <div class="reel-meta-desc">7% vs 13% told as a story, not a chart. Animated typography, voiceover, the math the deck has been making since slide one.</div>
+          <div class="reel-meta-stats">
+            <span><strong>0:38</strong></span>
+            <span><strong>9:16</strong></span>
+            <span><strong>1080p</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reel-card">
+        <div class="iphone" data-reel="nia" tabindex="0" role="button" aria-label="Play NIA — The Pathway Reel with sound">
+          <div class="iphone-btn-left"></div>
+          <div class="iphone-btn-vol-up"></div>
+          <div class="iphone-btn-vol-down"></div>
+          <div class="iphone-btn-power"></div>
+          <div class="iphone-island"></div>
+          <div class="iphone-screen">
+            <video src="images/reels/nia-reel-web.mp4" poster="images/reels/nia-reel-poster.jpg" muted loop playsinline preload="metadata" autoplay></video>
+          </div>
+          <div class="iphone-pulse">SPEC · 24s</div>
+          <div class="iphone-cta">▶ Tap to watch with sound</div>
+        </div>
+        <div class="reel-meta">
+          <div class="reel-meta-tag">Pillar 03 · HBCU to High-Rise</div>
+          <div class="reel-meta-title">NIA — <em>The Pathway</em> Reel</div>
+          <div class="reel-meta-desc">A first-person story from the cohort grad side. Direct address, jobsite B-roll, end card lands the CTA. The voice your feed is missing.</div>
+          <div class="reel-meta-stats">
+            <span><strong>0:24</strong></span>
+            <span><strong>9:16</strong></span>
+            <span><strong>1080p</strong></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ===== CAROUSELS — sit beneath the iPhone reels in the same slide ===== -->
+    <div class="reels-divider reveal stagger-4" style="margin-top: 5rem; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,0.10); display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--yellow);">Three Carousels · 18 Slides Total</div>
+      <div style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: var(--gray);">Scroll each row to see the full 6-slide arc.</div>
+    </div>
+
+    <!-- CAROUSEL 1 -->
+    <div class="carousel-block reveal">
+      <div class="carousel-meta">
+        <div class="carousel-pillar-tag">Carousel 01 · Pillar: The Numbers</div>
+      </div>
+      <h3 class="carousel-block-title">"7% / 13% — The Math Doesn't Add Up. Yet."</h3>
+      <p class="carousel-block-desc">An editorial data drop turning AEC Unites' core stat into a screenshotable, repostable, sponsor-friendly carousel. Shareable enough to live on Construction Dive's LinkedIn.</p>
+      <div class="carousel-strip">
+        <div class="carousel-slide"><div class="carousel-slide-num">01 / 06</div><img src="images/carousel-1-cover-7-vs-13.png" loading="lazy" decoding="async" alt="Carousel 1 cover"></div>
+        <div class="carousel-slide"><div class="carousel-slide-num">02 / 06</div><img src="images/carousel-1-slide-2.png" loading="lazy" decoding="async" alt="The Gap"></div>
+        <div class="carousel-slide"><div class="carousel-slide-num">03 / 06</div><img src="images/carousel-1-slide-3.png" loading="lazy" decoding="async" alt="Why It Matters"></div>
+        <div class="carousel-slide"><div class="carousel-slide-num">04 / 06</div><img src="images/carousel-1-slide-4.png" loading="lazy" decoding="async" alt="Two Levers"></div>
+        <div class="carousel-slide"><div class="carousel-slide-num">05 / 06</div><img src="images/carousel-1-slide-5.png" loading="lazy" decoding="async" alt="Board Is The Proof"></div>
+        <div class="carousel-slide"><div class="carousel-slide-num">06 / 06</div><img src="images/carousel-1-slide-6.png" loading="lazy" decoding="async" alt="Join Us CTA"></div>
+      </div>
+      <div class="carousel-hint">Scroll to view all 6 slides</div>
+    </div>
+
+    <!-- CAROUSEL 2 -->
+    <div class="carousel-block reveal">
+      <div class="carousel-meta">
+        <div class="carousel-pillar-tag">Carousel 02 · Pillar: Member Spotlights</div>
+      </div>
+      <h3 class="carousel-block-title">"Inside H.J. Russell &amp; Company"</h3>
+      <p class="carousel-block-desc">The recurring monthly member feature. A founder's story, the projects, the partnership — proof that membership is more than a logo on a website.</p>
+      <div class="carousel-strip">
+        <div class="carousel-slide"><div class="carousel-slide-num">01 / 06</div><img src="images/carousel-2-cover-hj-russell-spotlight.png" loading="lazy" decoding="async" alt="Member Spotlight cover"></div>
+        <div class="carousel-slide"><div class="carousel-slide-num">02 / 06</div><img src="images/carousel-2-slide-2.png" loading="lazy" decoding="async" alt="Founded 1952"></div>
+        <div class="carousel-slide"><div class="carousel-slide-num">03 / 06</div><img src="images/carousel-2-slide-3.png" loading="lazy" decoding="async" alt="What They've Built"></div>
+        <div class="carousel-slide"><div class="carousel-slide-num">04 / 06</div><img src="images/carousel-2-slide-4.png" loading="lazy" decoding="async" alt="Pull Quote"></div>
+        <div class="carousel-slide"><div class="carousel-slide-num">05 / 06</div><img src="images/carousel-2-slide-5.png" loading="lazy" decoding="async" alt="Ripple Effect"></div>
+        <div class="carousel-slide"><div class="carousel-slide-num">06 / 06</div><img src="images/carousel-2-slide-6.png" loading="lazy" decoding="async" alt="Want To Be Featured"></div>
+      </div>
+      <div class="carousel-hint">Scroll to view all 6 slides</div>
+    </div>
+
+    <!-- CAROUSEL 3 -->
+    <div class="carousel-block reveal">
+      <div class="carousel-meta">
+        <div class="carousel-pillar-tag">Carousel 03 · Pillar: Talent Journeys</div>
+      </div>
+      <h3 class="carousel-block-title">"From HBCU to High-Rise"</h3>
+      <p class="carousel-block-desc">A career map for students, parents, counselors. School → scholarship → cohort → first role. The kind of post that lands on every Black college campus group chat.</p>
+      <div class="carousel-strip">
+        <div class="carousel-slide"><div class="carousel-slide-num">01 / 06</div><img src="images/carousel-3-cover-hbcu-to-highrise.png" loading="lazy" decoding="async" alt="Talent Journey cover"></div>
+        <div class="carousel-slide"><div class="carousel-slide-num">02 / 06</div><img src="images/carousel-3-slide-2.png" loading="lazy" decoding="async" alt="Choose Your School"></div>
+        <div class="carousel-slide"><div class="carousel-slide-num">03 / 06</div><img src="images/carousel-3-slide-3.png" loading="lazy" decoding="async" alt="Scholarship"></div>
+        <div class="carousel-slide"><div class="carousel-slide-num">04 / 06</div><img src="images/carousel-3-slide-4.png" loading="lazy" decoding="async" alt="Cohort + Internship"></div>
+        <div class="carousel-slide"><div class="carousel-slide-num">05 / 06</div><img src="images/carousel-3-slide-5.png" loading="lazy" decoding="async" alt="First Role + Mentorship"></div>
+        <div class="carousel-slide"><div class="carousel-slide-num">06 / 06</div><img src="images/carousel-3-slide-6.png" loading="lazy" decoding="async" alt="Your Move CTA"></div>
+      </div>
+      <div class="carousel-hint">Scroll to view all 6 slides</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 5 — WHY US (Why TC + Why Not an Agency merged)
+     ============================================ -->
+<section class="slide dark-slide">
+  <div class="why-content">
+    <div class="slide-eyebrow reveal">04 / Why Us</div>
+    <h2 class="display-headline reveal stagger-1" style="max-width: 1100px;">
+      A creative director, not <em>an agency</em>.
+    </h2>
+    <p class="reveal stagger-2" style="max-width: 880px; margin-top: 1.5rem; font-size: 1.1rem; line-height: 1.55; color: var(--gray);">
+      An agency engagement buys a campaign with a start and an end. This buys an <em style="color: var(--yellow); font-style: normal;">engine</em> that compounds every month — built by a senior creative who is already <em>inside</em> the HBCU pipeline AEC Unites is feeding.
+    </p>
+
+    <div class="why-grid">
+      <div class="why-stat reveal stagger-1" style="border-color: rgba(255,255,255,0.12);">
+        <div class="why-stat-num" style="color: var(--yellow);">14<span style="font-size: 0.6em;">yrs</span></div>
+        <div class="why-stat-label" style="color: var(--white);">Creative direction + design</div>
+        <div class="why-stat-desc" style="color: var(--gray);">BFA, Art Institute of Dallas. Brand systems, video, motion, print, web — the full creative stack from one operator. No agency overhead, no handoffs.</div>
+      </div>
+      <div class="why-stat reveal stagger-2" style="border-color: rgba(255,255,255,0.12);">
+        <div class="why-stat-num" style="color: var(--yellow);">5</div>
+        <div class="why-stat-label" style="color: var(--white);">HBCU campus initiatives</div>
+        <div class="why-stat-desc" style="color: var(--gray);">PVAMU, Clark Atlanta, AUC, Morgan State, Rice. I speak the language of the talent pipeline AEC Unites is feeding — because I'm already inside it.</div>
+      </div>
+      <div class="why-stat reveal stagger-3" style="border-color: rgba(255,255,255,0.12);">
+        <div class="why-stat-num" style="color: var(--yellow);">FX6</div>
+        <div class="why-stat-label" style="color: var(--white);">Cinema-grade production</div>
+        <div class="why-stat-desc" style="color: var(--gray);">Sony FX6 + A7RV, full DaVinci Resolve post pipeline. Member firm shoots that look like Apollo, not LinkedIn stock. Real photography backing every spotlight.</div>
+      </div>
+      <div class="why-stat reveal stagger-4" style="border-color: rgba(255,255,255,0.12);">
+        <div class="why-stat-num" style="color: var(--yellow);">1</div>
+        <div class="why-stat-label" style="color: var(--white);">Black-owned shop, agency volume</div>
+        <div class="why-stat-desc" style="color: var(--gray);">AI-augmented production lets one Black-owned studio ship at agency cadence without agency overhead. Speaker at AiCON 2026 (Austin) — built ADA, the AI host on the main stage.</div>
+      </div>
+    </div>
+
+
+    <!-- ===== AGENCY COMPARISON (was Slide 10) ===== -->
+    <div class="reels-divider reveal stagger-5" style="margin-top: 5rem; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,0.10); display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--yellow);">Versus the Agency Answer</div>
+      <div style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: var(--gray);">Five axes. Same shape-of-org argument.</div>
+    </div>
+
+    <div class="versus-grid reveal stagger-6">
+      <div class="versus-head">
+        <div class="versus-head-axis">The Comparison</div>
+        <div class="versus-head-col them">
+          <span class="versus-head-col-sub">Option A</span>
+          Traditional DEI Comms Agency
+        </div>
+        <div class="versus-head-col us">
+          <span class="versus-head-col-sub">Option B</span>
+          Taylormade Creative
+        </div>
+      </div>
+
+      <div class="versus-row">
+        <div class="versus-axis"><span class="versus-axis-num">01</span>Cultural Authority</div>
+        <div class="versus-them">Borrowed secondhand through case studies. The senior name in the room rarely returns the calls.</div>
+        <div class="versus-us">Already <strong>inside the HBCU pipeline</strong> AEC Unites is feeding — PVAMU, Clark Atlanta, AUC, Morgan State, Rice. Cultural authority earned by building the work, not pitching it.</div>
+      </div>
+
+      <div class="versus-row">
+        <div class="versus-axis"><span class="versus-axis-num">02</span>Time to Launch</div>
+        <div class="versus-them">Six-to-eight week onboarding before the first asset ships. Discovery decks, brand audits, stakeholder interviews — billed.</div>
+        <div class="versus-us"><strong>Day 7:</strong> visual system locked. <strong>Day 30:</strong> sixteen posts shipped, Newsletter Issue 01 live. The work starts when the contract is signed, not three pre-meetings later.</div>
+      </div>
+
+      <div class="versus-row">
+        <div class="versus-axis"><span class="versus-axis-num">03</span>Who Does the Work</div>
+        <div class="versus-them">Senior names sell the pitch; a junior account team executes it. You're one of fourteen logos on the agency-of-record wall.</div>
+        <div class="versus-us">One <strong>senior creative director</strong> on every asset — concept, shoot, edit, copy, ship. AI-augmented production, lean by design, agency volume without agency overhead.</div>
+      </div>
+
+      <div class="versus-row">
+        <div class="versus-axis"><span class="versus-axis-num">04</span>What You're Buying</div>
+        <div class="versus-them">A campaign with a beginning and an end. Decks, deliverables, an agency-of-record line item your CFO has to renew on faith.</div>
+        <div class="versus-us">A <strong>content engine</strong>: visual system, pillars, monthly newsletter, member-firm spotlight pipeline, sponsor-attribution reports. It compounds — every month the work gets cheaper and louder.</div>
+      </div>
+
+      <div class="versus-row">
+        <div class="versus-axis"><span class="versus-axis-num">05</span>Cost Posture</div>
+        <div class="versus-them">Built for the Fortune-500 procurement budget that can subsidize the overhead. Six-figure annual minimums are common.</div>
+        <div class="versus-us">Sized to a <strong>non-profit the board has to be defensive about</strong>. Three engagement options. Investment ranges discussed live on the call — no procurement gymnastics.</div>
+      </div>
+    </div>
+
+    <div class="versus-foot reveal stagger-4">
+      <strong>The shape-of-org argument.</strong> AEC Unites is a coalition with a board heavier than most agencies' client rosters and a marketing team that doesn't yet exist. The right-shape answer is a senior creative partner who can move at coalition speed — not a fourteen-person account structure built for procurement-driven Fortune 500s.
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE 6 — NEXT STEP (Engagement + CTA merged)
+     ============================================ -->
+<section class="slide light-slide next-step-slide" id="nextStepSlide" style="padding-top: 0;">
+  <div class="nextstep-hero reveal">
+    <img src="images/nextstep-tower-sunrise.png" alt="Half-built structural steel tower at sunrise, construction workers visible across multiple floors">
+    <div class="nextstep-hero-tag">The work · sunrise on a job that's already started</div>
+  </div>
+  <div class="engage-content">
+    <div class="slide-eyebrow reveal" style="color: var(--blue);">05 / Next Step</div>
+    <h2 class="display-headline reveal stagger-1" style="color: var(--ink); max-width: 1100px;">
+      Three ways in. Then let's <em>make the call</em>.
+    </h2>
+    <p class="reveal stagger-2" style="max-width: 880px; margin-top: 1.5rem; font-size: 1.05rem; line-height: 1.55; color: var(--text-mid);">
+      Investment ranges sized to scope and discussed live on the working call. Every engagement includes approval workflow — every post routed through your designated reviewer before publish, 24-hour turnaround standard.
+    </p>
+
+    <div class="engage-grid">
+      <div class="engage-card reveal stagger-1">
+        <div class="engage-tag">Option A · Foundation</div>
+        <div class="engage-name">Build + Handoff</div>
+        <div class="engage-desc">I build the full visual system, content pillars, templates, and 30 days of launch content. Your team runs it from day 31 forward.</div>
+        <ul class="engage-includes">
+          <li>Brand visual system + 5 carousel templates</li>
+          <li>30 days of finished content (16+ posts)</li>
+          <li>Style guide + posting playbook</li>
+          <li>Two-week handoff training</li>
+        </ul>
+      </div>
+
+      <div class="engage-card featured reveal stagger-2">
+        <div class="engage-tag">Most Aligned · Option B</div>
+        <div class="engage-name">Content Engine Retainer</div>
+        <div class="engage-desc">Full monthly content production, scheduling, community management, and analytics. Treat me as your in-house creative team without the hire.</div>
+        <ul class="engage-includes">
+          <li>3 IG / 5 LinkedIn posts/week + daily Stories</li>
+          <li>Monthly LinkedIn Newsletter "The AEC Gap"</li>
+          <li>2 on-site member firm shoots per quarter (DC/NYC/ATL bench partner for East Coast)</li>
+          <li>Community management — DMs, comments, member firm @mentions, repost permissions</li>
+          <li>Monthly KPI report + strategy call with marketing committee</li>
+          <li>Construction Inclusion Week + Mixer coverage included</li>
+        </ul>
+      </div>
+
+      <div class="engage-card reveal stagger-3">
+        <div class="engage-tag">Option C · Sprint</div>
+        <div class="engage-name">Campaign Sprint</div>
+        <div class="engage-desc">Single event, single launch, single quarter. Black Business Mixer, Construction Inclusion Week, a major announcement.</div>
+        <ul class="engage-includes">
+          <li>Pre / during / post 3-week content arc</li>
+          <li>Day-of live coverage</li>
+          <li>Recap reel + photo deliverables</li>
+          <li>Sponsor co-branded assets</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="engage-foot reveal stagger-4">
+      <strong>About the solo question.</strong> Taylormade Creative runs lean by design — but never alone for a client this size. Trusted bench: <em>second shooter, audio engineer, motion designer, captioner, and an East Coast collaborator for member firm shoots in DC, NYC, and ATL.</em> Project SLA shared at contracting; backup coverage for every major event.
+    </div>
+
+    <!-- ===== INLINE CTA (was Slide 12) ===== -->
+    <div class="reels-divider reveal stagger-5" style="margin-top: 5rem; padding-top: 3rem; border-top: 1px solid rgba(0,0,0,0.10); display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--blue);">The 20-Minute Working Call</div>
+      <div style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: var(--text-mid);">No deck-on-rails. A working session.</div>
+    </div>
+
+    <div class="next-step-cta reveal stagger-6" style="margin-top: 3rem; text-align: center; max-width: 820px; margin-left: auto; margin-right: auto;">
+      <h3 class="cta-headline" style="color: var(--ink); margin-bottom: 1.5rem;">
+        Let's give the <em>mission</em> the megaphone it deserves.
+      </h3>
+      <p class="cta-sub" style="color: var(--text-mid); margin-bottom: 2rem;">
+        Walk through these carousels live, sharpen the pillars to your moment, shape the right pilot. Twenty minutes — that's it.
+      </p>
+      <div class="cta-buttons" style="margin-bottom: 3rem;">
+        <a class="cta-btn primary" href="mailto:taylormademd@gmail.com?subject=AEC%20Unites%20%E2%80%94%20Content%20Engine%20Pilot%20Call">Book the 20-min call</a>
+        <a class="cta-btn secondary" href="https://www.taylormadecreative.net" target="_blank">See the portfolio</a>
+      </div>
+
+      <div class="signature" style="border-color: rgba(0,0,0,0.10); color: var(--text-mid);">
+        <div>
+          Nelson Taylor
+          <strong style="color: var(--ink);">Creative Director · Taylormade Creative</strong>
+        </div>
+        <div>
+          <a href="mailto:taylormademd@gmail.com" style="color: var(--blue);">taylormademd@gmail.com</a>
+          <strong style="color: var(--ink);">(817) 707-1291</strong>
+        </div>
+        <div>
+          Dallas-Fort Worth, TX
+          <strong style="color: var(--ink);">taylormadecreative.net</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+/* ============================================
+   SLIDE-DOT NAV — click to jump, IO drives active state
+   ============================================ */
+(() => {
+  const slides = [...document.querySelectorAll('section.slide')];
+  const dots = [...document.querySelectorAll('.slide-dot')];
+  if (!slides.length || !dots.length) return;
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const idx = parseInt(dot.dataset.target, 10);
+      slides[idx]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+  const dotIO = new IntersectionObserver(entries => {
+    let topMost = null;
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        if (!topMost || entry.boundingClientRect.top < topMost.boundingClientRect.top) topMost = entry;
+      }
+    });
+    if (topMost) {
+      const idx = slides.indexOf(topMost.target);
+      dots.forEach(d => d.classList.toggle('active', parseInt(d.dataset.target, 10) === idx));
+    }
+  }, { threshold: [0.4, 0.6], rootMargin: "-20% 0px -40% 0px" });
+  slides.forEach(s => dotIO.observe(s));
+})();
+
+/* ============================================
+   PROGRESS BAR + MOBILE CTA TOGGLE
+   ============================================ */
+const progressBar = document.getElementById('progressBar');
+const mobileCta = document.getElementById('mobileCta');
+const ctaSlide = document.querySelector('#nextStepSlide') || document.querySelector('.cta-slide');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const progress = (scrollTop / scrollHeight) * 100;
+  progressBar.style.width = progress + '%';
+  if (mobileCta && ctaSlide) {
+    const ctaTop = ctaSlide.getBoundingClientRect().top;
+    const show = progress > 18 && ctaTop > window.innerHeight * 0.4;
+    mobileCta.classList.toggle('show', show);
+  }
+}, { passive: true });
+
+/* ============================================
+   REVEAL ON SCROLL
+   ============================================ */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => observer.observe(el));
+
+/* ============================================
+   GENERIC COUNT-UP
+   ============================================ */
+function animateCount(el, target, duration, opts = {}) {
+  const suffix = opts.suffix ?? (el.dataset.suffix || '');
+  const prefix = opts.prefix ?? (el.dataset.prefix || '');
+  const useComma = opts.comma ?? (el.dataset.comma === '1');
+  const startTime = performance.now();
+  function fmt(n) {
+    if (useComma) return n.toLocaleString('en-US');
+    return String(n);
+  }
+  function step(now) {
+    const elapsed = now - startTime;
+    const p = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = prefix + fmt(Math.floor(eased * target)) + suffix;
+    if (p < 1) requestAnimationFrame(step);
+    else el.textContent = prefix + fmt(target) + suffix;
+  }
+  requestAnimationFrame(step);
+}
+
+/* COVER COUNT-UP */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const left = document.querySelector('.cover-num.left');
+    const right = document.querySelector('.cover-num.right');
+    if (left && right) {
+      animateCount(left, 7, 900, { suffix: '%' });
+      animateCount(right, 13, 1500, { suffix: '%' });
+    }
+  }, 700);
+});
+
+/* ARC COUNT-UP on scroll */
+const arcIO = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting && !e.target.dataset.counted) {
+      const target = parseInt(e.target.dataset.target, 10);
+      animateCount(e.target, target, 1400);
+      e.target.dataset.counted = '1';
+    }
+  });
+}, { threshold: 0.55 });
+document.querySelectorAll('.arc-num[data-target]').forEach(n => arcIO.observe(n));
+
+/* ============================================
+   FLIP MORPH — cover numbers travel into bar chart
+   The source cover-num is far above the viewport by the time the bar enters,
+   so we use FLIP to compute the offset and animate the target FROM that
+   off-screen origin INTO its natural bar position.
+   ============================================ */
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const morphIO = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting || entry.target.dataset.morphed) return;
+    entry.target.dataset.morphed = '1';
+    if (prefersReducedMotion) return;
+    const id = entry.target.dataset.morphTarget;
+    const source = document.querySelector(`[data-morph="${id}"]`);
+    if (!source) return;
+    const first = source.getBoundingClientRect();
+    const last  = entry.target.getBoundingClientRect();
+    if (first.width === 0 || last.width === 0) return;
+    const dx = first.left - last.left;
+    const dy = first.top  - last.top;
+    const sx = first.width / last.width;
+    const sy = first.height / last.height;
+    entry.target.style.willChange = 'transform, opacity';
+    const anim = entry.target.animate(
+      [
+        { transform: `translate(${dx}px, ${dy}px) scale(${sx}, ${sy})`, opacity: 0.85 },
+        { transform: 'translate(0, 0) scale(1, 1)', opacity: 1 }
+      ],
+      { duration: 1200, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'both' }
+    );
+    anim.onfinish = () => { entry.target.style.willChange = ''; };
+  });
+}, { threshold: 0.45 });
+document.querySelectorAll('[data-morph-target]').forEach(el => morphIO.observe(el));
+
+/* ============================================
+   CAROUSEL — drag, arrows, lightbox
+   ============================================ */
+document.querySelectorAll('.carousel-strip').forEach(strip => {
+  let isDown = false, startX = 0, scrollStart = 0, moved = false;
+  strip.tabIndex = 0;
+  strip.addEventListener('pointerdown', e => {
+    if (e.target.closest('button')) return;
+    isDown = true; moved = false;
+    strip.setPointerCapture(e.pointerId);
+    startX = e.pageX;
+    scrollStart = strip.scrollLeft;
+  });
+  strip.addEventListener('pointermove', e => {
+    if (!isDown) return;
+    const dx = e.pageX - startX;
+    if (Math.abs(dx) > 4) moved = true;
+    strip.scrollLeft = scrollStart - dx * 1.4;
+  });
+  ['pointerup', 'pointercancel', 'pointerleave'].forEach(ev =>
+    strip.addEventListener(ev, () => { isDown = false; })
+  );
+  strip.addEventListener('keydown', e => {
+    const card = strip.querySelector('.carousel-slide');
+    if (!card) return;
+    const step = card.offsetWidth + 16;
+    if (e.key === 'ArrowRight') { e.preventDefault(); strip.scrollBy({ left:  step, behavior: 'smooth' }); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); strip.scrollBy({ left: -step, behavior: 'smooth' }); }
+  });
+  // Suppress click after drag
+  strip.addEventListener('click', e => { if (moved) { e.stopPropagation(); e.preventDefault(); moved = false; } }, true);
+});
+
+/* AYA REEL — click opens fullscreen video lightbox with sound */
+const ayaFrame = document.getElementById('ayaFrame');
+if (ayaFrame) {
+  const openAya = () => {
+    const ov = document.createElement('div');
+    ov.className = 'lb-overlay';
+    ov.innerHTML = `
+      <button class="lb-close" aria-label="Close">×</button>
+      <video src="images/aya-numbers-reel.mp4" controls autoplay playsinline style="max-height: 92vh; max-width: 92vw; border-radius: 18px; box-shadow: 0 30px 80px rgba(0,0,0,0.7);"></video>
+      <div class="lb-counter">AYA · The Numbers · Spec Reel · 32s · ESC to close</div>
+    `;
+    document.body.appendChild(ov);
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(() => ov.classList.add('open'));
+    const close = () => {
+      ov.classList.remove('open');
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', onKey);
+      setTimeout(() => ov.remove(), 320);
+    };
+    const onKey = (e) => { if (e.key === 'Escape') close(); };
+    document.addEventListener('keydown', onKey);
+    ov.querySelector('.lb-close').addEventListener('click', close);
+    ov.addEventListener('click', e => { if (e.target === ov) close(); });
+  };
+  ayaFrame.addEventListener('click', openAya);
+  ayaFrame.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openAya(); } });
+}
+
+/* SPEC REEL iPhone mockups — click opens fullscreen lightbox with sound */
+const reelMeta = {
+  aya: { src: 'images/reels/aya-reel-web.mp4', label: 'AYA · The Numbers · Pillar 01 · 0:38 · ESC to close' },
+  nia: { src: 'images/reels/nia-reel-web.mp4', label: 'NIA · The Pathway · Pillar 03 · 0:24 · ESC to close' }
+};
+document.querySelectorAll('.iphone[data-reel]').forEach(phone => {
+  const key = phone.getAttribute('data-reel');
+  const meta = reelMeta[key];
+  if (!meta) return;
+  const openReel = () => {
+    const ov = document.createElement('div');
+    ov.className = 'lb-overlay';
+    ov.innerHTML = `
+      <button class="lb-close" aria-label="Close">×</button>
+      <video src="${meta.src}" controls autoplay playsinline style="max-height: 92vh; max-width: 92vw; border-radius: 18px; box-shadow: 0 30px 80px rgba(0,0,0,0.7);"></video>
+      <div class="lb-counter">${meta.label}</div>
+    `;
+    document.body.appendChild(ov);
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(() => ov.classList.add('open'));
+    const close = () => {
+      ov.classList.remove('open');
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', onKey);
+      setTimeout(() => ov.remove(), 320);
+    };
+    const onKey = (e) => { if (e.key === 'Escape') close(); };
+    document.addEventListener('keydown', onKey);
+    ov.querySelector('.lb-close').addEventListener('click', close);
+    ov.addEventListener('click', e => { if (e.target === ov) close(); });
+  };
+  phone.addEventListener('click', openReel);
+  phone.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openReel(); } });
+});
+
+/* LIGHTBOX */
+const allCarouselSlides = Array.from(document.querySelectorAll('.carousel-strip'));
+allCarouselSlides.forEach(strip => {
+  const slides = Array.from(strip.querySelectorAll('.carousel-slide'));
+  slides.forEach((slide, idx) => {
+    slide.addEventListener('click', e => {
+      if (e.defaultPrevented) return;
+      openLightbox(slides, idx);
+    });
+  });
+});
+
+function openLightbox(slides, startIdx) {
+  let current = startIdx;
+  const ov = document.createElement('div');
+  ov.className = 'lb-overlay';
+  ov.innerHTML = `
+    <button class="lb-close" aria-label="Close">×</button>
+    <img src="${slides[current].querySelector('img').src}" alt="">
+    <div class="lb-counter">Slide ${current + 1} / ${slides.length} · ← → to navigate · ESC to close</div>
+  `;
+  document.body.appendChild(ov);
+  document.body.style.overflow = 'hidden';
+  requestAnimationFrame(() => ov.classList.add('open'));
+
+  const imgEl = ov.querySelector('img');
+  const counter = ov.querySelector('.lb-counter');
+  function update() {
+    imgEl.src = slides[current].querySelector('img').src;
+    counter.textContent = `Slide ${current + 1} / ${slides.length} · ← → to navigate · ESC to close`;
+  }
+  function close() {
+    ov.classList.remove('open');
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', onKey);
+    setTimeout(() => ov.remove(), 320);
+  }
+  function onKey(e) {
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowRight') { current = (current + 1) % slides.length; update(); }
+    if (e.key === 'ArrowLeft')  { current = (current - 1 + slides.length) % slides.length; update(); }
+  }
+  document.addEventListener('keydown', onKey);
+  ov.querySelector('.lb-close').addEventListener('click', close);
+  ov.addEventListener('click', e => { if (e.target === ov) close(); });
+  imgEl.addEventListener('click', e => { e.stopPropagation(); current = (current + 1) % slides.length; update(); });
+}
+</script>
+
+</body>
+</html>

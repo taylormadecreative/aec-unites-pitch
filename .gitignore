@@ -1,0 +1,34 @@
+# macOS
+.DS_Store
+
+# Source / intermediate video assets — keep web versions only
+images/reels/aya-reel-source.mp4
+images/reels/aya-reel-final.mp4
+images/reels/aya-reel-mograph.mp4
+images/reels/nia-reel-source.mp4
+images/reels/nia-reel-final.mp4
+images/reels/nia-reel-mograph.mp4
+images/reels/end-card-aya.png
+images/reels/end-card-nia.png
+
+# Remotion project — build pipeline, not deployed
+remotion/
+
+# Working notes
+01-strategy.md
+02-carousels.md
+03-nia-reel.md
+REVIEW-SUMMARY.md
+
+# OS junk
+Thumbs.db
+*.swp
+# More dead-weight files (old reel versions, unused references)
+images/aya-avatar-portrait.png
+images/nia-avatar-portrait.png
+images/aya-numbers-reel.mp4
+images/aya-numbers-reel-clean.mp4
+images/aya-numbers-reel-thumb.jpg
+images/aya-numbers-reel.srt
+images/hero-cover-architect.png
+
