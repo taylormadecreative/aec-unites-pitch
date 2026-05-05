@@ -1182,6 +1182,78 @@ h1, h2, h3, h4 {
 }
 
 /* ============================================
+   SOCIAL CLIENT ROSTER — past engagements band
+   ============================================ */
+.roster-block {
+  margin-top: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.10);
+}
+.roster-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.roster-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--yellow);
+}
+.roster-note {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: var(--gray);
+  max-width: 580px;
+  text-align: right;
+}
+@media (max-width: 800px) { .roster-note { text-align: left; } }
+.roster-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+@media (max-width: 900px) { .roster-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 500px) { .roster-grid { grid-template-columns: 1fr; } }
+.roster-card {
+  background: rgba(255,255,255,0.02);
+  padding: 1.4rem 1.4rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: background 0.3s;
+}
+.roster-card:hover { background: rgba(245,200,66,0.04); }
+.roster-card-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+.roster-card-name {
+  font-family: 'Saira Condensed', 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 1.45rem;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  text-transform: uppercase;
+  line-height: 1.05;
+}
+.roster-card-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--gray);
+}
+
+/* ============================================
    SPEC REELS — iPhone mockup gallery
    ============================================ */
 .reels-content { max-width: 1300px; margin: 0 auto; width: 100%; }
@@ -2149,7 +2221,37 @@ h1, h2, h3, h4 {
       AYA carries Pillar 01 &mdash; <em style="color: var(--yellow); font-style: normal;">The Gap</em>. NIA carries Pillar 03 &mdash; <em style="color: var(--yellow); font-style: normal;">HBCU to High-Rise</em>. Tap either phone to watch with sound.
     </p>
 
-    <div class="reels-grid reveal stagger-3">
+    <!-- ROSTER — past social engagements -->
+    <div class="roster-block reveal stagger-4">
+      <div class="roster-head">
+        <div class="roster-tag">Past Social Engagements</div>
+        <div class="roster-note">Brands the studio has shipped social content for. Stats from these engagements weren&rsquo;t tracked in the format AEC Unites would expect &mdash; the retainer above is built so that doesn&rsquo;t repeat. Every post tagged, every story attributed, KPIs reported monthly.</div>
+      </div>
+      <div class="roster-grid">
+        <div class="roster-card">
+          <div class="roster-card-tag">Beauty &middot; Salon</div>
+          <div class="roster-card-name">Toni&amp;Guy</div>
+          <div class="roster-card-desc">International hair brand &mdash; salon-network social content + lifestyle creative.</div>
+        </div>
+        <div class="roster-card">
+          <div class="roster-card-tag">Beauty &middot; Hair</div>
+          <div class="roster-card-name">DreamCatchers</div>
+          <div class="roster-card-desc">Premium hair extensions brand &mdash; product, lifestyle, and stylist-network content.</div>
+        </div>
+        <div class="roster-card">
+          <div class="roster-card-tag">Hospitality &middot; DFW</div>
+          <div class="roster-card-name">Lava Cantina</div>
+          <div class="roster-card-desc">DFW restaurant + live-music venue &mdash; event coverage, hospitality social, weekly content cycle.</div>
+        </div>
+        <div class="roster-card">
+          <div class="roster-card-tag">Home &middot; Retail</div>
+          <div class="roster-card-name">World of Baths</div>
+          <div class="roster-card-desc">Home retail brand &mdash; product photography, showroom social, regional brand content.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reels-grid reveal stagger-5" style="margin-top: 4rem;">
 
       <div class="reel-card">
         <div class="iphone" data-reel="aya" tabindex="0" role="button" aria-label="Play AYA — The Numbers Reel with sound">
